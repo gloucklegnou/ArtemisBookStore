@@ -84,7 +84,7 @@ public class GenerateBookStore {
                     // create triples describing him
                     authorUUID = UUID.randomUUID();
                     authors.put(authorFullName, authorUUID);
-                    bw.write("abr:" + authorUUID + " a abo:Person ;");
+                    bw.write("abr:" + authorUUID + " a abo:Writer ;");
                     bw.newLine();
                     bw.write("\t foaf:givenName \"" + authorFirstName + "\" ;");
                     bw.newLine();
