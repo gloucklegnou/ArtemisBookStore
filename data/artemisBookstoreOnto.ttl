@@ -1,1 +1,35 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix abo:   <http://artemisBookstore.com/ontology#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 
+abo:Book a rdfs:Class;
+         rdfs:subClassOf dcterms:dcterms:BibliographicResource;
+		 rdfs:label "Book"@en, "Livre"@fr;
+		 rdfs:comment: "Books class"@en, "La classe des livres"@fr.
+		 
+abo:Writer a rdfs:Class;
+         rdfs:subClassOf foaf:Person;
+		 rdfs:label "Writer"@en, "Ecrivain"@fr;
+		 rdfs:comment: "Writers class"@en, "La classe des écrivains"@fr.
+		 
+abo:Publisher a rdfs:Class;
+         rdfs:subClassOf dcterms:Agent;
+		 rdfs:label "Publisher"@en, "Editeur"@fr;
+		 rdfs:comment: "Publishers class"@en, "La classe des éditeurs"@fr.
+
+abo:pages a rdf:Property;
+          rdfs:domain abo:Book;
+		  rdfs:range  xsd:Integer;
+		  rdfs:comment "Pages number"@en, "Nombre de pages"@fr.
+
+abo:isbn a rdf:Property;
+          rdfs:domain abo:Book;
+		  rdfs:range  xsd:String;
+		  rdfs:comment "ISBN number"@en, "Numéro ISBN"@fr.
+		  
+abo:author a rdf:Property;
+          rdfs:domain abo:Book;
+		  rdfs:range  abo:Writer;
+		  rdfs:comment "Book's author"@en, "Auteur du livre"@fr.

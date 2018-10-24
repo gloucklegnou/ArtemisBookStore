@@ -84,7 +84,7 @@ public class GenerateBookStore {
                     // create triples describing him
                     authorUUID = UUID.randomUUID();
                     authors.put(authorFullName, authorUUID);
-                    bw.write("abr:" + authorUUID + " a foaf:Person ;");
+                    bw.write("abr:" + authorUUID + " a abo:Person ;");
                     bw.newLine();
                     bw.write("\t foaf:givenName \"" + authorFirstName + "\" ;");
                     bw.newLine();
@@ -101,14 +101,14 @@ public class GenerateBookStore {
                     publisherUUID = UUID.randomUUID();
                     publishers.put(publisherName, publisherUUID);
 
-                    bw.write("abr:" + publisherUUID + " a dcterms:publisher ;");
+                    bw.write("abr:" + publisherUUID + " a abo:Publisher ;");
                     bw.newLine();
                     bw.write("\t foaf:name \"" + publisherName + "\" .");
                     bw.newLine();
                     bw.newLine();
                 }
                 UUID bookUUID = UUID.randomUUID();
-                bw.write("abr:" + bookUUID + " a dcterms:BibliographicResource ;");
+                bw.write("abr:" + bookUUID + " a abo:Book ;");
                 bw.newLine();
                 bw.write("\t dcterms:title \"" + bookTitle + "\" ;");
                 bw.newLine();
