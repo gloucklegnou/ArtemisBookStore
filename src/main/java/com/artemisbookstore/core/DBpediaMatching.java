@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.artemisbookstore.csv.core;
+package com.artemisbookstore.core;
 
-import static com.artemisbookstore.csv.core.ListBooks.inputFileName;
+import static com.artemisbookstore.core.ListBooks.inputFileName;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
