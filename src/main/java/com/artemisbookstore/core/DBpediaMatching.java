@@ -16,7 +16,6 @@
  */
 package com.artemisbookstore.core;
 
-import static com.artemisbookstore.core.ListBooks.inputFileName;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -47,7 +46,7 @@ public class DBpediaMatching {
         // create an empty model
         Model model = ModelFactory.createDefaultModel();
 
-        InputStream in = FileManager.get().open(inputFileName);
+        InputStream in = FileManager.get().open(artemisDataFileName);
         if (in == null) {
             throw new IllegalArgumentException("File: " + artemisDataFileName + " not found");
         }
