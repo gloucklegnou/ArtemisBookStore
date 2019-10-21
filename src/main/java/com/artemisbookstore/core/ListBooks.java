@@ -32,25 +32,25 @@ import org.apache.jena.util.FileManager;
  */
 public class ListBooks {
 
-    static final String FOAF_PREFIX = "http://xmlns.com/foaf/0.1/";
-    static final String ABO_PREFIX ="http://artemisBookstore.com/ontology#";
+    private static final String FOAF_PREFIX = "http://xmlns.com/foaf/0.1/";
+    private static final String ABO_PREFIX ="http://artemisBookstore.com/ontology#";
     
-    static final String inputFileName = "data/artemisBookstoreData-v1.ttl";
+    private static final String AB_FILE_NAME = "data/artemisBookstoreData-v1.ttl";
 
-    static final Scanner sc = new Scanner(System.in);
+    private static final Scanner SC = new Scanner(System.in);
 
     public static String readString(String prompt) {
         System.out.print(prompt);
-        return sc.nextLine();
+        return SC.nextLine();
     }
 
     public static void main(String[] args) {
         // create an empty model
         Model model = ModelFactory.createDefaultModel();
 
-        InputStream in = FileManager.get().open(inputFileName);
+        InputStream in = FileManager.get().open(AB_FILE_NAME);
         if (in == null) {
-            throw new IllegalArgumentException("File: " + inputFileName + " not found");
+            throw new IllegalArgumentException("File: " + AB_FILE_NAME + " not found");
         }
 
         // read the Turtle file
