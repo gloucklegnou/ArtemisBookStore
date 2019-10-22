@@ -69,14 +69,14 @@ public class GenerateBookStore {
                 //    System.out.println(line);
                 String[] lineTokens = line.split(";");
 
-                String authorLastName = lineTokens[0];
-                String authorFirstName = lineTokens[1];
+                String authorFamilyName = lineTokens[0];
+                String authorGivenName = lineTokens[1];
                 String bookTitle = lineTokens[2];
                 int pagesNb = Integer.parseInt(lineTokens[3]);
                 String isbn = lineTokens[4];
                 String publisherName = lineTokens[5];
 
-                String authorFullName = authorFirstName + " " + authorLastName;
+                String authorFullName = authorGivenName + " " + authorFamilyName;
 
                 UUID authorUUID = authors.get(authorFullName);
                 if (authorUUID == null) {
@@ -86,11 +86,11 @@ public class GenerateBookStore {
                     authors.put(authorFullName, authorUUID);
                     bw.write("abr:" + authorUUID + " a abo:Writer ;");
                     bw.newLine();
-                    bw.write("\t foaf:givenName \"" + authorFirstName + "\" ;");
+                    bw.write("\t foaf:givenName \"" + authorGivenName + "\" ;");
                     bw.newLine();
-                    bw.write("\t foaf:surname \"" + authorLastName + "\" ;");
+                    bw.write("\t foaf:familyName \"" + authorFamilyName + "\" ;");
                     bw.newLine();
-                    bw.write("\t foaf:name \"" + authorFirstName + " " + authorLastName + "\" .");
+                    bw.write("\t foaf:name \"" + authorGivenName + " " + authorFamilyName + "\" .");
                     bw.newLine();
                     bw.newLine();
                 }
