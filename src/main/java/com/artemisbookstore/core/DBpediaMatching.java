@@ -40,7 +40,7 @@ public class DBpediaMatching {
     static final String ABO_PREFIX = "http://artemisBookstore.com/ontology#";
 
     public static final String dbpediaDataFileName = "data/dbpediaAmericanWriters.csv";
-    static final String artemisDataFileName = "data/artemisBookstoreData-v1.ttl";
+    static final String artemisDataFileName = "data/artemisBookstoreData-v1-en.ttl";
 
     public static void main(String[] args) throws IOException {
         // create an empty model
@@ -65,7 +65,7 @@ public class DBpediaMatching {
                 String dbpediaURI = lineTokens[0];
                 String dbpediaWriterName = lineTokens[1];
                 List<Resource> artemisAuthors = model.listResourcesWithProperty(foafNameProp,
-                        model.createLiteral(dbpediaWriterName)).toList();
+                        model.createLiteral(dbpediaWriterName, "en")).toList();
                 if (!artemisAuthors.isEmpty()) {
                     System.out.println("match ###########################");
                     for (Resource author : artemisAuthors) {
@@ -77,7 +77,7 @@ public class DBpediaMatching {
                 }
             }
             System.out.println("#########\nNumber of matching " + nbMatching);
-            FileOutputStream out = new FileOutputStream("data/artemisBookstoreData-v2.ttl");
+            FileOutputStream out = new FileOutputStream("data/artemisBookstoreData-v2-en.ttl");
             model.setNsPrefix("dbr", "http://dbpedia.org/resource/");
             model.setNsPrefix("owl", "http://www.w3.org/2002/07/owl#");
             model.write(out,"Turtle");

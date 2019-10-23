@@ -57,10 +57,10 @@ public class ListBooks {
         model.read(in, "", "TURTLE");
 
         Property foafGivenNameProp = model.createProperty(FOAF_PREFIX, "givenName");
-        Property foafSurnameProp = model.createProperty(FOAF_PREFIX, "surname");
+        Property foafFamilyNameProp = model.createProperty(FOAF_PREFIX, "familyName");
 
         String authorSurname = readString("surname : ");
-        List<Statement> stmts = model.listStatements(null, foafSurnameProp, model.createLiteral(authorSurname)).toList();
+        List<Statement> stmts = model.listStatements(null, foafFamilyNameProp, model.createLiteral(authorSurname,"en")).toList();
         
         Resource author = null;
         if (stmts.size() > 1) {
@@ -68,7 +68,7 @@ public class ListBooks {
             String authorGivenName = readString("given name : ");
             for (Statement stmt : stmts) {
                 List<Statement> stmts2 = model.listStatements(stmt.getSubject(), 
-                        foafGivenNameProp, model.createLiteral(authorGivenName)).toList();
+                        foafGivenNameProp, model.createLiteral(authorGivenName, "en")).toList();
                 if (! stmts2.isEmpty()) {
                     author = stmt.getSubject();
                 }
