@@ -60,6 +60,8 @@ public class GenerateBookStore {
             bw.newLine();
             bw.write("@prefix abr: <http://artemisBookstore.com/abr/> .");
             bw.newLine();
+            bw.write("@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .");
+            bw.newLine();
 
             bw.newLine();
 
@@ -86,11 +88,11 @@ public class GenerateBookStore {
                     authors.put(authorFullName, authorUUID);
                     bw.write("abr:" + authorUUID + " a abo:Writer ;");
                     bw.newLine();
-                    bw.write("\t foaf:givenName \"" + authorGivenName + "\" ;");
+                    bw.write("\t foaf:givenName \"" + authorGivenName + "\"@en ;");
                     bw.newLine();
-                    bw.write("\t foaf:familyName \"" + authorFamilyName + "\" ;");
+                    bw.write("\t foaf:familyName \"" + authorFamilyName + "\"@en ;");
                     bw.newLine();
-                    bw.write("\t foaf:name \"" + authorGivenName + " " + authorFamilyName + "\" .");
+                    bw.write("\t foaf:name \"" + authorGivenName + " " + authorFamilyName + "\"@en .");
                     bw.newLine();
                     bw.newLine();
                 }
@@ -103,20 +105,20 @@ public class GenerateBookStore {
 
                     bw.write("abr:" + publisherUUID + " a abo:Publisher ;");
                     bw.newLine();
-                    bw.write("\t foaf:name \"" + publisherName + "\" .");
+                    bw.write("\t foaf:name \"" + publisherName + "\"@en .");
                     bw.newLine();
                     bw.newLine();
                 }
                 UUID bookUUID = UUID.randomUUID();
                 bw.write("abr:" + bookUUID + " a abo:Book ;");
                 bw.newLine();
-                bw.write("\t dcterms:title \"" + bookTitle + "\" ;");
+                bw.write("\t dcterms:title \"" + bookTitle + "\"@en ;");
                 bw.newLine();
                 bw.write("\t abo:author abr:" + authorUUID + " ;");
                 bw.newLine();
                 bw.write("\t abo:isbn \"" + isbn + "\" ;");
                 bw.newLine();
-                bw.write("\t abo:pages \"" + pagesNb + "\"^^<http://www.w3.org/2001/XMLSchema#int> ;");
+                bw.write("\t abo:pages \"" + pagesNb + "\"^^xsd:int ;");
                 bw.newLine();
                 bw.write("\t dcterms:publisher abr:" + publisherUUID + " .");
                 bw.newLine();
@@ -126,7 +128,7 @@ public class GenerateBookStore {
     }
 
     public static void main(String[] args) throws IOException {
-        generateTurtle("data/artemisBookstoreData-v1.csv", "data/artemisBookstoreData-v1.ttl");
+        generateTurtle("data/artemisBookstoreData-v1.csv", "data/artemisBookstoreData-v1-en.ttl");
     }
 
 }
