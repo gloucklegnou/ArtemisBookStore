@@ -3,6 +3,8 @@ Code pour le TP *Artemis Bookstore*, TP d'introduction au Framework [Apache Jena
 
 La structure de ce projet est la suivante :
 
+![alt text](http://lig-membres.imag.fr/genoud/teaching/coursSW//tps/TP03_JENA_FUSEKI/images/ArtemisBookstoreProj.png)
+
 # répertoire Data
 
 ## artemisBookstoreData-v1.csv
