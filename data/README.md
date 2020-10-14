@@ -13,14 +13,14 @@ Le graphe de données d'ArtemisBookStore enrichi de liens `owl:sameAs` par
 le programme `DBpediaMatching` à partir des données CSV concernant les écrivains
 américains récupérés dans DBpedia.
 
-##artemisBookstoreOnto.ttl
+## artemisBookstoreOnto.ttl
 Vocabulaire RDFS pour modéliser les données d'Artemis Bookstore
 
-##dbpediaAmericanWriters.csv
+## dbpediaAmericanWriters.csv
 Données CVS extraites de DBpedia par la requête `dbpediaAmericanWriters.rq` 
 et utilisées par le pgm java DBpediaMatching pour créer les liens owl:sameAs
 
-##dbpediaAmericanWriters.rq
+## dbpediaAmericanWriters.rq
 requête SPARQL pour extraire les noms des écrivains Américains contenus dans DBpedia
 
 
