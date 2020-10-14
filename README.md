@@ -14,17 +14,13 @@ pour créé un fichier TURTLE correspondant au graphe de données initial d'arte
 ## artemisBookstoreOnto.ttl
 Vocabulaire RDFS pour modéliser les données d'Artemis Bookstore
 
-## dbpediaAmericanWriters.csv
-Données CVS extraites de DBpedia par la requête `dbpediaAmericanWriters.rq` 
-et utilisées par le pgm java DBpediaMatching pour créer les liens owl:sameAs
-
 ## dbpediaAmericanWriters.rq
 requête SPARQL pour extraire les noms des écrivains Américains contenus dans DBpedia
 
 # répertoire src
 
 ## DBpediaMatching
-Programme Java liant les données RDF d'Artemis Bookstore avec les données de 
+Programme Java enrichissant les données RDF d'Artemis Bookstore avec des liens <code>owl:sameAs</code> vers les données de 
 DBpedia et utilisant l'API Jena Core ([TP2 exo 3](http://lig-membres.imag.fr/genoud/teaching/coursSW/tps/TP01_RDF/TP01.html#section04))
 
 ## ListBooks
