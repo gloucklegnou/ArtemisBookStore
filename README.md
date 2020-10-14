@@ -27,7 +27,7 @@ requête SPARQL pour extraire les noms des écrivains Américains contenus dans 
 Programme Java liant les données RDF d'Artemis Bookstore avec les données de 
 DBpedia et utilisant l'API Jena Core (TP2 exo 3)
 
-## Listbooks
+## ListBooks
 Programme Java utilisant l'API Jena Core pour obtenir la liste des livres d'un auteur
 donné (TP1 exo 5).
 
