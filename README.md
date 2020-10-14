@@ -3,7 +3,7 @@ Code pour le TP *Artemis Bookstore*, TP d'introduction au Framework [Apache Jena
 
 La structure de ce projet est la suivante :
 
-![alt text](http://lig-membres.imag.fr/genoud/teaching/coursSW//tps/TP03_JENA_FUSEKI/images/ArtemisBookstoreProj.png)
+![alt text](http://lig-membres.imag.fr/genoud/teaching/coursSW/tps/TP03_JENA_FUSEKI/images/ArtemisBookstoreProj.png)
 
 # répertoire Data
 
@@ -25,11 +25,11 @@ requête SPARQL pour extraire les noms des écrivains Américains contenus dans 
 
 ## DBpediaMatching
 Programme Java liant les données RDF d'Artemis Bookstore avec les données de 
-DBpedia et utilisant l'API Jena Core (TP2 exo 3)
+DBpedia et utilisant l'API Jena Core ([TP2 exo 3](http://lig-membres.imag.fr/genoud/teaching/coursSW/tps/TP01_RDF/TP01.html#section04))
 
 ## ListBooks
 Programme Java utilisant l'API Jena Core pour obtenir la liste des livres d'un auteur
-donné (TP1 exo 5).
+donné ([TP1 exo 5](http://lig-membres.imag.fr/genoud/teaching/coursSW/tps/TP02_SPARQL/TP02.html#section03)).
 
 ## GenerateBookStoreGraph
 Programme Java générant les données RDF à partir des données CSV (TP1 exo 4).
