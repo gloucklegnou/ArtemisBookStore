@@ -30,7 +30,7 @@ import java.util.UUID;
  *
  * @author Philippe Genoud - LIG Steamer - Université Grenoble Alpes
  */
-public class GenerateBookStore {
+public class GenerateBookStoreGraph {
 
     private static final Map<String, UUID> authors = new HashMap<>();
     private static final Map<String, UUID> publishers = new HashMap<>();
