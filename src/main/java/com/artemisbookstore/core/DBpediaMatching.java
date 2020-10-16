@@ -62,8 +62,8 @@ public class DBpediaMatching {
             while ((line = br.readLine()) != null) {
                 //    System.out.println(line);
                 String[] lineTokens = line.split(",");
-                String dbpediaURI = lineTokens[0];
-                String dbpediaWriterName = lineTokens[1];
+                String dbpediaURI = lineTokens[0].replaceAll("^\"|\"$", ""); // suppress the leadig and trailing quotes (if exist) from the string
+                String dbpediaWriterName = lineTokens[1].replaceAll("^\"|\"$", "");
                 List<Resource> artemisAuthors = model.listResourcesWithProperty(foafNameProp,
                         model.createLiteral(dbpediaWriterName, "en")).toList();
                 if (!artemisAuthors.isEmpty()) {
