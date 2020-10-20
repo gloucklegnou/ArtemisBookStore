@@ -128,7 +128,8 @@ public class GenerateBookStoreGraph {
     }
 
     public static void main(String[] args) throws IOException {
-        generateTurtle("data/artemisBookstoreData-v1.csv", "data/artemisBookstoreData-v1-en.ttl");
+        generateTurtle("data/artemisBookstoreData-v1.csv", "data/generated/artemisBookstoreData-v1-en.ttl");
+        System.out.println("RDF data has been generated");
     }
 
 }

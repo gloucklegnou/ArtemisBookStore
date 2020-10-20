@@ -1,4 +1,5 @@
 /target/
+/data/generated/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###

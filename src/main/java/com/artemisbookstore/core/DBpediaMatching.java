@@ -39,7 +39,7 @@ public class DBpediaMatching {
     static final String FOAF_PREFIX = "http://xmlns.com/foaf/0.1/";
     static final String ABO_PREFIX = "http://artemisBookstore.com/ontology#";
 
-    public static final String dbpediaDataFileName = "data/dbpediaAmericanWriters.csv";
+    public static final String dbpediaDataFileName = "data/generated/dbpediaAmericanWriters.csv";
     static final String artemisDataFileName = "data/artemisBookstoreData-v1-en.ttl";
 
     public static void main(String[] args) throws IOException {
@@ -77,7 +77,7 @@ public class DBpediaMatching {
                 }
             }
             System.out.println("#########\nNumber of matching " + nbMatching);
-            FileOutputStream out = new FileOutputStream("data/artemisBookstoreData-v2-en.ttl");
+            FileOutputStream out = new FileOutputStream("data/generated/artemisBookstoreData-v2-en.ttl");
             model.setNsPrefix("dbr", "http://dbpedia.org/resource/");
             model.setNsPrefix("owl", "http://www.w3.org/2002/07/owl#");
             model.write(out,"Turtle");
