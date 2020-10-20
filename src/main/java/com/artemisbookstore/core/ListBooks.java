@@ -19,9 +19,11 @@ package com.artemisbookstore.core;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
+import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.util.FileManager;
@@ -33,9 +35,9 @@ import org.apache.jena.util.FileManager;
 public class ListBooks {
 
     private static final String FOAF_PREFIX = "http://xmlns.com/foaf/0.1/";
-    private static final String ABO_PREFIX ="http://artemisBookstore.com/ontology#";
-    
-    private static final String AB_FILE_NAME = "data/artemisBookstoreData-v1.ttl";
+    private static final String ABO_PREFIX = "http://artemisBookstore.com/ontology#";
+
+    private static final String AB_FILE_NAME = "data/generated/artemisBookstoreData-v1-en.ttl";
 
     private static final Scanner SC = new Scanner(System.in);
 
@@ -59,24 +61,35 @@ public class ListBooks {
         Property foafGivenNameProp = model.createProperty(FOAF_PREFIX, "givenName");
         Property foafFamilyNameProp = model.createProperty(FOAF_PREFIX, "familyName");
 
-        String authorSurname = readString("surname : ");
-        List<Statement> stmts = model.listStatements(null, foafFamilyNameProp, model.createLiteral(authorSurname,"en")).toList();
-        
-        Resource author = null;
-        if (stmts.size() > 1) {
-            System.out.println("There are more than one author with this name ");
-            String authorGivenName = readString("given name : ");
-            for (Statement stmt : stmts) {
-                List<Statement> stmts2 = model.listStatements(stmt.getSubject(), 
-                        foafGivenNameProp, model.createLiteral(authorGivenName, "en")).toList();
-                if (! stmts2.isEmpty()) {
-                    author = stmt.getSubject();
+        String stop = null;
+        do {
+            String authorGivenName = null;
+            String authorFamilyName = readString("Family name : ");
+            List<Statement> stmts = model.listStatements(null, foafFamilyNameProp, model.createLiteral(authorFamilyName, "en")).toList();
+            Resource author = null;
+            if (stmts.size() > 1) {
+                System.out.println("There are more than one author with this name ");
+                authorGivenName = readString("Given name : ");
+                for (Statement stmt : stmts) {
+                    System.out.println("object " + stmt.getObject());
+                    List<Statement> stmts2 = model.listStatements(stmt.getSubject(),
+                            foafGivenNameProp, model.createLiteral(authorGivenName, "en")).toList();
+                    if (!stmts2.isEmpty()) {
+                        author = stmt.getSubject();
+                    }
                 }
+            } else if (stmts.size() == 1) {
+                author = stmts.get(0).getSubject();
             }
-        }
-        if (author != null) {
-             // TODO complete with Jena Core code that finds all the books written by author.
-        }
+            if (author != null) {
+                // TODO complete with Jena Core code that finds all the books written by author.
+                System.out.println("books");
+            } else {
+                System.out.println("Author " + ((authorGivenName == null)?authorGivenName:"") + " " + 
+                        authorFamilyName + " does not exist" );
+            }
+            stop = readString("continue ? Y/N: ");
+        } while (!"N".equals(stop.toUpperCase()));
 
         System.out.println("finished");
     }
